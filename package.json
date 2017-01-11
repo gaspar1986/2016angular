@@ -1,0 +1,23 @@
+{
+  "name": "2016angular",
+  "version": "1.0.0",
+  "description": "2016angular学习 .idea",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gaspar1986/2016angular.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gaspar1986/2016angular/issues"
+  },
+  "homepage": "https://github.com/gaspar1986/2016angular#readme",
+  "dependencies": {
+    "angular": "^1.6.1"
+  }
+}

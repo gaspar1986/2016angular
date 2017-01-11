@@ -1,2 +1,3 @@
 # 2016angular
-2016angular学习
+.idea
+node_modules
