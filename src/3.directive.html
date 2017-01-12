@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<login-panel></login-panel>
+<div tyg-color>文字</div>
 <script src="../node_modules/angular/angular.js"></script>
 <script>
     //一切从模块开始，其他所有的组件都挂在模块下面
@@ -20,11 +20,13 @@
         $scope.name = user.name;
 
     })
-    //组件式指令
-    angular.module('helloAngular').directive('loginPanel',function () {
+    //装饰性组件
+    angular.module('helloAngular').directive('tygColor',function () {
         return {
-            //模版 实现DOM元素的转换
-            template:'用户名：<input type="text" name="username"/><button>登录</button>'
+            //链接函数，这里是唯一的可以操作DOM元素的地方
+            link:function (scope,element,attrs) {
+                element.css('color','red');
+            }
         }
     });
 
