@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="helloAngular">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="parentCtrl">
+    {{parent}}{{count}}
+    <div ng-controller="childCtrl">
+        {{child}}{{count}}
+        <input type="text" ng-model="num">
+        <button ng-click="$emit('add',num)">向上传递</button>
+        <button ng-click="$broadcast('add',num)">向下传递</button>
+        <div ng-controller="grandCtrl">
+            {{grand}}{{count}}
+        </div>
+    </div>
+</div>
+<script src="../node_modules/angular/angular.js"></script>
+<script>
+    //一切从模块开始，其他所有的组件都挂在模块下面
+    angular.module('helloAngular',[])//两个参数的时候表示定义一个模块，一个参数的时候获取模块，第二个参数表示模块的依赖项
+    //当定义一个控制器之后，就会产生一个$scope对象(视图模型viewmodel)，作用增强$scope
+    angular.module('helloAngular').controller('parentCtrl',function ($scope) {
+        $scope.count = 0;
+        $scope.parent = 'parent';
+        $scope.$on('add',function (event,num) {
+            $scope.count = $scope.count + Number(num);
+        })
+
+    })
+    angular.module('helloAngular').controller('childCtrl',function ($scope) {
+        $scope.count = 0;
+        $scope.child = 'child';
+        $scope.$on('add',function (event,num) {
+            $scope.count = $scope.count + Number(num);
+        })
+
+    })
+    angular.module('helloAngular').controller('grandCtrl',function ($scope) {
+        $scope.count = 0;
+        $scope.grand = 'grand';
+        $scope.$on('add',function (event,num) {
+            $scope.count = $scope.count + Number(num);
+        })
+    })
+
+
+</script>
+</body>
+</html>

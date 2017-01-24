@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="helloAngular">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-init="isShow=true">
+<div ng-controller="watchCtrl" ng-if="isShow">
+    <input type="text" tyg-model="age">
+    <p>{{age}}</p>
+    <button ng-click="hide()">隐藏</button>
+</div>
+<script src="../node_modules/angular/angular.min.js"></script>
+<script>
+    //以下的例子为如何实现ng-model的效果
+    angular.module('helloAngular',[]);
+    angular.module('helloAngular').controller('watchCtrl',function ($rootScope,$scope) {
+        $scope.hide = function () {
+            $rootScope.isShow = false;
+        }
+    });
+    angular.module('helloAngular').directive('tygModel',function () {
+        return{
+            link:function (scope,element,attr) {
+                element.on('keyup',function () {
+                    scope[attr['tygModel']] = element.val();
+                    scope.$apply();
+                });
+                scope.$watch([attr['tygModel']],function (newVal) {
+                    element.val(newVal);
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>

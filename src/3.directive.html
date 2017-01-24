@@ -5,20 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-<<<<<<< HEAD
+
 <div tyg-color>这是文字</div>
-=======
-<div tyg-color>文字</div>
->>>>>>> origin/master
+
 <script src="../node_modules/angular/angular.js"></script>
 <script>
     //一切从模块开始，其他所有的组件都挂在模块下面
     angular.module('helloAngular',[])//两个参数的时候表示定义一个模块，一个参数的时候获取模块，第二个参数表示模块的依赖项
-<<<<<<< HEAD
     //当定义一个控制器之后，就会产生一个$scope对象(视图模型viewmodel)，作用增强$scope,为其增加属性
-=======
-    //当定义一个控制器之后，就会产生一个$scope对象(视图模型viewmodel)，作用增强$scope
->>>>>>> origin/master
     angular.module('helloAngular').controller('hellctrl',function ($scope) {
         //user看作model，跟数据有关
         var user ={
@@ -28,28 +22,31 @@
         $scope.name = user.name;
 
     })
-<<<<<<< HEAD
+
     //样式指令
     angular.module('helloAngular').directive('tygColor',function () {
         return {
             //链接函数,是唯一的允许操作DOM元素的地方
-            link:function (scope,element,attrs) {
+            link: function (scope, element, attrs) {
                 console.log(scope);
-                element.css('color','red');
-                element.on('click',function () {
+                element.css('color', 'red');
+                element.on('click', function () {
                     alert(element.html())
                 })
-=======
+            }
+        }
+    })
+
     //装饰性组件
     angular.module('helloAngular').directive('tygColor',function () {
         return {
             //链接函数，这里是唯一的可以操作DOM元素的地方
             link:function (scope,element,attrs) {
                 element.css('color','red');
->>>>>>> origin/master
+
             }
         }
-    });
+    })
 
 </script>
 </body>
